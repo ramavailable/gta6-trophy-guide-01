@@ -1,5 +1,7 @@
-/* Vice Trophy Tracker — dark Vice City look, drawn in CSS only. No web fonts,
-   no images: everything the page shows is its own code, so it works offline. */
+/* Vice Trophy Tracker — dark Vice City look, drawn in CSS only. No web
+   fonts, no images: everything the page shows is its own code, so the guide
+   works fully offline. Layout: hero with progress, filter controls, a
+   checklist beside a sticky guide panel, then the roadmap. */
 
 :root {
   --bg: #0e0a1a;
@@ -26,6 +28,11 @@ body {
   line-height: 1.5;
 }
 
+button { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+/* Hero and progress ---------------------------------------------------- */
+
 .hero {
   background: linear-gradient(135deg, #2b0f4d 0%, #7a1042 55%, #0e4a5e 100%);
   border-bottom: 3px solid var(--magenta);
@@ -38,41 +45,18 @@ body {
 .tagline { margin: 0 0 14px; font-size: 16px; color: #e8ddf5; max-width: 720px; }
 
 .progress-wrap { max-width: 720px; }
-#progress-text { margin: 0 0 6px; font-weight: 700; }
+#progress-line { margin: 0 0 6px; font-weight: 700; }
 .progress-bar { height: 12px; background: #00000055; border-radius: 6px; overflow: hidden; }
-#progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--magenta), var(--cyan)); transition: width 0.3s; }
-.progress-grades { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+#progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--magenta), var(--cyan)); transition: width 0.3s; }
+.grade-breakdown { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+
+/* Page frame ------------------------------------------------------------ */
 
 main { max-width: 1240px; margin: 0 auto; padding: 0 24px 32px; }
 h2 { font-size: 24px; margin: 28px 0 10px; }
+.hint { color: var(--muted); font-size: 14px; margin: 0 0 6px; }
 
-.roadmap-intro { color: var(--muted); max-width: 900px; margin: 0 0 14px; }
-.missable-banner {
-  background: #3d1420;
-  border: 1px solid #ff2e88;
-  border-left: 5px solid var(--magenta);
-  border-radius: 8px;
-  padding: 12px 16px;
-  margin-bottom: 18px;
-  display: flex;
-  gap: 10px;
-}
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.step { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
-.step h3 { margin: 0 0 4px; font-size: 17px; color: var(--cyan); }
-.step-hours { margin: 0 0 8px; font-size: 13px; color: var(--gold); font-weight: 700; }
-.step p { margin: 0 0 10px; font-size: 14px; color: #ddd6ea; }
-.step-trophies { display: flex; flex-wrap: wrap; gap: 6px; }
-.step-chip {
-  background: var(--panel-2);
-  color: var(--text);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 3px 10px;
-  font-size: 12px;
-  cursor: pointer;
-}
-.step-chip:hover { border-color: var(--cyan); }
+/* Controls -------------------------------------------------------------- */
 
 .controls-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 10px 0; }
 .controls-row input[type="search"] {
@@ -108,8 +92,7 @@ h2 { font-size: 24px; margin: 28px 0 10px; }
 }
 .kind-row button.active { background: var(--magenta); border-color: var(--magenta); font-weight: 700; }
 
-button { font-family: inherit; }
-#export, #reset, .import-btn {
+#export-btn, #reset-btn, #copy-summary-btn, .import-btn {
   background: var(--panel-2);
   color: var(--text);
   border: 1px solid var(--line);
@@ -118,12 +101,16 @@ button { font-family: inherit; }
   font-size: 14px;
   cursor: pointer;
 }
-#export:hover, #reset:hover, .import-btn:hover { border-color: var(--cyan); }
+#export-btn:hover, #reset-btn:hover, #copy-summary-btn:hover, .import-btn:hover { border-color: var(--cyan); }
 .import-btn input { display: none; }
-.shown-count { margin: 0 0 0 auto; color: var(--muted); font-size: 14px; }
+.trophy-count { margin: 0 0 0 auto; color: var(--muted); font-size: 14px; }
+
+/* Checklist and guide panel --------------------------------------------- */
 
 .layout { display: flex; gap: 20px; align-items: flex-start; margin-top: 8px; }
-.trophy-list { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.list-col { flex: 1; min-width: 0; }
+.trophy-list { display: flex; flex-direction: column; gap: 8px; }
+
 .trophy {
   display: flex;
   gap: 12px;
@@ -141,6 +128,7 @@ button { font-family: inherit; }
 .trophy-main { min-width: 0; }
 .trophy-main h3 { margin: 0 0 2px; font-size: 16px; }
 .trophy-desc { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
+
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag {
   font-size: 11px;
@@ -152,6 +140,7 @@ button { font-family: inherit; }
   padding: 2px 7px;
 }
 .tag-missable { background: #3d1420; border-color: var(--magenta); color: #ffb3d1; font-weight: 700; }
+
 .grade {
   font-size: 11px;
   text-transform: uppercase;
@@ -165,6 +154,24 @@ button { font-family: inherit; }
 .grade-silver { background: var(--silver); color: #1c2733; }
 .grade-bronze { background: var(--bronze); color: #2b1503; }
 
+.empty-state {
+  background: var(--panel);
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+}
+.empty-state button {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
 .detail {
   flex: none;
   width: 380px;
@@ -175,11 +182,12 @@ button { font-family: inherit; }
   border-radius: 12px;
   padding: 18px;
 }
-.detail-head { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
+.detail-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; margin-bottom: 8px; }
 .detail-head h2 { margin: 0; font-size: 21px; line-height: 1.25; }
 .detail-desc { margin: 0 0 12px; color: var(--muted); font-style: italic; }
 .detail h3 { margin: 14px 0 6px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--cyan); }
 .detail-guide { margin: 0; font-size: 15px; }
+.detail-step { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
 .sources { margin: 0; padding-left: 18px; font-size: 13px; color: var(--muted); }
 .sources a { color: var(--cyan); }
 .earn-btn {
@@ -194,6 +202,41 @@ button { font-family: inherit; }
   font-weight: 700;
   cursor: pointer;
 }
+.earn-btn:hover { filter: brightness(1.15); }
+
+/* Roadmap --------------------------------------------------------------- */
+
+.roadmap-intro { color: var(--muted); max-width: 900px; margin: 0 0 14px; }
+.missable-banner {
+  background: #3d1420;
+  border: 1px solid #ff2e88;
+  border-left: 5px solid var(--magenta);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  display: flex;
+  gap: 10px;
+}
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.step { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+.step-done { border-color: var(--cyan); }
+.step h3 { margin: 0 0 4px; font-size: 17px; color: var(--cyan); }
+.step-meta { margin: 0 0 8px; font-size: 13px; color: var(--gold); font-weight: 700; }
+.step p { margin: 0 0 10px; font-size: 14px; color: #ddd6ea; }
+.step-trophies { display: flex; flex-wrap: wrap; gap: 6px; }
+.step-chip {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.step-chip:hover { border-color: var(--cyan); }
+.chip-earned { opacity: 0.65; text-decoration: line-through; }
+
+/* Footer ---------------------------------------------------------------- */
 
 footer { max-width: 1240px; margin: 0 auto; padding: 0 24px 40px; color: var(--muted); font-size: 14px; }
 footer h2 { color: var(--text); }
