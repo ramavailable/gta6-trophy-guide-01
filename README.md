@@ -1,4 +1,4 @@
-# Vice Trophy Tracker — GTA VI trophy guide & checklist
+# Vice Trophy Tracker — GTA VI trophy guide &amp; checklist
 
 [![make.fun bounty](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
 [![make.fun rank](https://make.fun/badge/gta6-trophy-guide-01/ramavailable/gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
@@ -10,8 +10,8 @@ An offline guide and tracker for all **55 Grand Theft Auto VI trophies on PlaySt
 
 - **Every trophy** with its official name, description and grade as PlayStation publishes them.
 - **A guide for each trophy, written for this tracker in its own words**, with its sources named beside it (PowerPyx, Push Square, PSNProfiles / Exophase). One trophy, *Bad Luck, I Guess*, is still unconfirmed by every guide — it is marked as such rather than guessed at.
-- **A roadmap to the platinum** in 3 steps (~200 hours, difficulty 4/10), with the one possibly-missable trophy flagged: *Positive Mental Attitude* has a Chapter 1 meditation that can be missed.
-- **A tracker**: tick trophies off, progress saves in the browser (localStorage), export it to a file and import it back. Filters by grade and kind (story, missable, collectibles, activities, robberies, questlines, misc), search, hide-earned, and a spoiler-safe mode that hides story trophy names until earned.
+- **A roadmap to the platinum** in 3 steps (~200 hours, difficulty 4/10), with the one possibly-missable trophy flagged: *Positive Mental Attitude* has a Chapter 1 meditation that can be missed. Each step shows how many of its trophies you have earned.
+- **A tracker**: tick trophies off and progress saves in the browser (localStorage). Export it to a file and import it back, copy a one-line progress summary, sort by grade, name or roadmap stage, and filter by grade and kind (story, missable, collectibles, activities, robberies, questlines, misc). Search, hide-earned, and a spoiler-safe mode that hides story trophy names until earned. Arrow keys move between trophies, Home and End jump to the ends, and Enter marks one earned.
 
 ## Run it
 
