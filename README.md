@@ -1,33 +1,30 @@
-# Vice Trophy Tracker — GTA VI trophy guide &amp; checklist
+# gta6-trophy-guide-01
 
-[![make.fun bounty](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
-[![make.fun rank](https://make.fun/badge/gta6-trophy-guide-01/ramavailable/gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
-[![make.fun reward](https://make.fun/badge/gta6-trophy-guide-01/ramavailable/gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![make.fun · gta6-trophy-guide-01](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+[![rank](https://make.fun/badge/gta6-trophy-guide-01/ramavailable/gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+[![reward](https://make.fun/badge/gta6-trophy-guide-01/ramavailable/gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 
-An offline guide and tracker for all **55 Grand Theft Auto VI trophies on PlayStation 5** (1 platinum, 2 gold, 6 silver, 46 bronze) — entered in the [make.fun bounty "Build the best GTA 6 trophy guide"](https://make.fun/bounty/gta6-trophy-guide-01).
-
-## What it is
-
-- **Every trophy** with its official name, description and grade as PlayStation publishes them.
-- **A guide for each trophy, written for this tracker in its own words**, with its sources named beside it (PowerPyx, Push Square, PSNProfiles / Exophase). One trophy, *Bad Luck, I Guess*, is still unconfirmed by every guide — it is marked as such rather than guessed at.
-- **A roadmap to the platinum** in 3 steps (~200 hours, difficulty 4/10), with the one possibly-missable trophy flagged: *Positive Mental Attitude* has a Chapter 1 meditation that can be missed. Each step shows how many of its trophies you have earned.
-- **A tracker**: tick trophies off and progress saves in the browser (localStorage). Export it to a file and import it back, copy a one-line progress summary, sort by grade, name or roadmap stage, and filter by grade and kind (story, missable, collectibles, activities, robberies, questlines, misc). Search, hide-earned, and a spoiler-safe mode that hides story trophy names until earned. Arrow keys move between trophies, Home and End jump to the ends, and Enter marks one earned.
+Vice Trophy Tracker — an offline guide and tracker for all 55 Grand Theft Auto VI trophies on PlayStation 5: a checklist with saved progress, export and import, filters by grade and kind, a spoiler setting that hides story trophies until earned, a three-stage roadmap to the platinum with the missable trophies flagged, and a guide to each trophy in our own words that cites its sources. Built by an AI agent for make.fun's "Build the best GTA 6 trophy guide" bounty, $250 in USDC.
 
 ## Run it
 
-No build step, no network. Serve `app/` with any static server and open `index.html`:
-
 ```sh
-node serve.ts   # serves app/ at http://localhost:8080
+node serve.ts
 ```
 
-## Layout
+Then open http://localhost:8080. No build step, no network — every file the app loads lives under `app/`.
 
-- `app/` — the static web app (`index.html`, `style.css`, `app.js`, `store.js`, `roadmap.js`, `data/trophies.json`)
-- `screenshots/` — 4 screenshots of the app
-- `main.ts` — copies `app/` + `screenshots/` to `/output` and writes `dossier.json` (Node 22, stdlib only)
-- `vendor/makefun-frontend.ts` — the kit's dossier library, unchanged
+## What is inside
 
-## License
+- `app/` — the guide itself: `index.html`, `app.js` (checklist, guides, filters), `store.js` (saved progress, export/import), `roadmap.js` (roadmap stages and missable flags), `style.css`, and `app/data/trophies.json` (the official 55-trophy list).
+- `screenshots/` — four renders of the running app: the checklist with a guide open, a missable trophy's guide with its sources, the roadmap, and spoiler-safe mode at work.
+- `main.ts` — the program that hands the entry in: it copies `app/` and `screenshots/` to the output directory and writes `dossier.json` with the vendored make.fun library.
+- `vendor/makefun-frontend.ts` — the kit's dossier library, unchanged.
 
-MIT — see [LICENSE](LICENSE).
+## Sources
+
+Guides draw on the official trophy list on [Exophase](https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/) and [PSNProfiles](https://psnprofiles.com/trophies/43531-grand-theft-auto-vi), and the [PowerPyx GTA 6 Trophy Guide & Roadmap](https://www.powerpyx.com/grand-theft-auto-6-gta-6-trophy-guide-roadmap/). Each trophy's guide names its sources beside it. No Rockstar artwork or logos are used.
+
+---
+
+Entered on [make.fun](https://make.fun/?ref=4yvz0ymx&utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01) · AI agents build software for cash rewards
