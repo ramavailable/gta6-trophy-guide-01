@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Trophy Tracker — GTA VI trophy guide &amp; checklist</title>
+<meta name="description" content="Offline guide and tracker for all 55 Grand Theft Auto VI trophies on PlayStation 5: every official name, description and grade, a guide with sources, a roadmap to the platinum, and a saved checklist.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Grand Theft Auto VI &middot; PlayStation 5 &middot; 55 trophies</p>
+    <h1>Vice Trophy Tracker</h1>
+    <p class="tagline">Every trophy, its official name and grade, a guide with sources, and a checklist that saves your progress — all offline.</p>
+    <div class="progress-wrap">
+      <p id="progress-text">0 of 55 earned</p>
+      <div class="progress-bar"><div id="progress-fill"></div></div>
+      <p id="progress-grades" class="progress-grades"></p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="controls" id="checklist">
+    <h2>Checklist &amp; guides</h2>
+    <div class="controls-row">
+      <input id="search" type="search" placeholder="Search trophies, descriptions, guides…" aria-label="Search trophies">
+      <label>Grade
+        <select id="grade">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label class="check"><input id="spoiler" type="checkbox"> Spoiler-safe (hide story names)</label>
+      <label class="check"><input id="hide-earned" type="checkbox"> Hide earned</label>
+    </div>
+    <div class="kind-row" role="group" aria-label="Filter by kind">
+      <button type="button" data-kind="all" class="active">All</button>
+      <button type="button" data-kind="story">Story</button>
+      <button type="button" data-kind="missable">Missable</button>
+      <button type="button" data-kind="collectible">Collectibles</button>
+      <button type="button" data-kind="activity">Activities</button>
+      <button type="button" data-kind="robbery">Robberies</button>
+      <button type="button" data-kind="questline">Questlines</button>
+      <button type="button" data-kind="misc">Misc</button>
+    </div>
+    <div class="controls-row">
+      <button id="export" type="button">Export progress</button>
+      <label class="import-btn">Import progress <input id="import" type="file" accept="application/json"></label>
+      <button id="reset" type="button">Reset progress</button>
+      <p id="shown-count" class="shown-count"></p>
+    </div>
+  </section>
+
+  <div class="layout">
+    <div id="trophy-list" class="trophy-list" aria-live="polite"></div>
+    <aside id="detail" class="detail" aria-live="polite"></aside>
+  </div>
+
+  <section class="roadmap" id="roadmap">
+    <h2>Roadmap to the platinum</h2>
+    <p class="roadmap-intro">About 200 hours, difficulty 4/10, one playthrough, no online trophies. Cheats disable trophies and saving — leave them off. Keep a save at the start and end of each chapter (15 manual slots); there is no mission replay.</p>
+    <div class="missable-banner">
+      <strong>&#9888; The one missable trophy:</strong>
+      <span><b>Positive Mental Attitude</b> — one meditation only happens in Chapter 1, at Jason&rsquo;s house. After the mission Down to Earth, talk to Lucia in the kitchen in the morning, follow her to the balcony and choose Accept. It is still unclear whether it is required for the trophy, so do it while you can.</span>
+    </div>
+    <div id="roadmap-steps" class="steps"></div>
+  </section>
+</main>
+
+<footer>
+  <h2>Sources &amp; notes</h2>
+  <p>Official names, descriptions and grades are as PlayStation publishes them, as listed by PSNProfiles and Exophase. Every guide is written for this tracker in its own words; the facts come from the PowerPyx GTA 6 Trophy Guide &amp; Roadmap and the Push Square GTA 6 Trophy Guide and Roadmap, named beside each trophy. One trophy, Bad Luck, I Guess, is still unconfirmed by every guide — it is marked as such rather than guessed at.</p>
+  <p>This guide works with the network off and loads nothing from outside this folder. No Rockstar Games logo, artwork or game screenshots are used. Data as of 20 November 2026; guides update as players confirm the last details.</p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+/* Vice Trophy Tracker — dark Vice City look, drawn in CSS only. No web fonts,
+   no images: everything the page shows is its own code, so it works offline. */
+
+:root {
+  --bg: #0e0a1a;
+  --panel: #1a1330;
+  --panel-2: #221a40;
+  --line: #332659;
+  --text: #f2eef7;
+  --muted: #b9aecf;
+  --magenta: #ff2e88;
+  --cyan: #22d3ee;
+  --gold: #f5c518;
+  --silver: #c8d0d8;
+  --bronze: #d08a4e;
+  --platinum: #a5f3fc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.hero {
+  background: linear-gradient(135deg, #2b0f4d 0%, #7a1042 55%, #0e4a5e 100%);
+  border-bottom: 3px solid var(--magenta);
+  padding: 20px 24px 16px;
+}
+
+.hero-inner { max-width: 1240px; margin: 0 auto; }
+.eyebrow { margin: 0 0 6px; letter-spacing: 2px; text-transform: uppercase; font-size: 13px; color: var(--cyan); }
+.hero h1 { margin: 0 0 6px; font-size: 34px; line-height: 1.1; letter-spacing: 1px; }
+.tagline { margin: 0 0 14px; font-size: 16px; color: #e8ddf5; max-width: 720px; }
+
+.progress-wrap { max-width: 720px; }
+#progress-text { margin: 0 0 6px; font-weight: 700; }
+.progress-bar { height: 12px; background: #00000055; border-radius: 6px; overflow: hidden; }
+#progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--magenta), var(--cyan)); transition: width 0.3s; }
+.progress-grades { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+
+main { max-width: 1240px; margin: 0 auto; padding: 0 24px 32px; }
+h2 { font-size: 24px; margin: 28px 0 10px; }
+
+.roadmap-intro { color: var(--muted); max-width: 900px; margin: 0 0 14px; }
+.missable-banner {
+  background: #3d1420;
+  border: 1px solid #ff2e88;
+  border-left: 5px solid var(--magenta);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  display: flex;
+  gap: 10px;
+}
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.step { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+.step h3 { margin: 0 0 4px; font-size: 17px; color: var(--cyan); }
+.step-hours { margin: 0 0 8px; font-size: 13px; color: var(--gold); font-weight: 700; }
+.step p { margin: 0 0 10px; font-size: 14px; color: #ddd6ea; }
+.step-trophies { display: flex; flex-wrap: wrap; gap: 6px; }
+.step-chip {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.step-chip:hover { border-color: var(--cyan); }
+
+.controls-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 10px 0; }
+.controls-row input[type="search"] {
+  flex: 1;
+  min-width: 240px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 15px;
+}
+.controls-row select {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 15px;
+}
+.check { display: flex; gap: 6px; align-items: center; font-size: 14px; }
+.check input { width: 18px; height: 18px; accent-color: var(--magenta); }
+
+.kind-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 6px; }
+.kind-row button {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.kind-row button.active { background: var(--magenta); border-color: var(--magenta); font-weight: 700; }
+
+button { font-family: inherit; }
+#export, #reset, .import-btn {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+#export:hover, #reset:hover, .import-btn:hover { border-color: var(--cyan); }
+.import-btn input { display: none; }
+.shown-count { margin: 0 0 0 auto; color: var(--muted); font-size: 14px; }
+
+.layout { display: flex; gap: 20px; align-items: flex-start; margin-top: 8px; }
+.trophy-list { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.trophy {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+.trophy:hover { border-color: var(--cyan); }
+.trophy.selected { border-color: var(--magenta); box-shadow: 0 0 0 1px var(--magenta); }
+.trophy.earned { opacity: 0.62; }
+.trophy input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--magenta); flex: none; }
+.trophy-main { min-width: 0; }
+.trophy-main h3 { margin: 0 0 2px; font-size: 16px; }
+.trophy-desc { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+.tag-missable { background: #3d1420; border-color: var(--magenta); color: #ffb3d1; font-weight: 700; }
+.grade {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-weight: 700;
+}
+.grade-platinum { background: var(--platinum); color: #08222b; }
+.grade-gold { background: var(--gold); color: #2b1f00; }
+.grade-silver { background: var(--silver); color: #1c2733; }
+.grade-bronze { background: var(--bronze); color: #2b1503; }
+
+.detail {
+  flex: none;
+  width: 380px;
+  position: sticky;
+  top: 16px;
+  background: var(--panel);
+  border: 1px solid var(--magenta);
+  border-radius: 12px;
+  padding: 18px;
+}
+.detail-head { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
+.detail-head h2 { margin: 0; font-size: 21px; line-height: 1.25; }
+.detail-desc { margin: 0 0 12px; color: var(--muted); font-style: italic; }
+.detail h3 { margin: 14px 0 6px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--cyan); }
+.detail-guide { margin: 0; font-size: 15px; }
+.sources { margin: 0; padding-left: 18px; font-size: 13px; color: var(--muted); }
+.sources a { color: var(--cyan); }
+.earn-btn {
+  margin-top: 18px;
+  width: 100%;
+  background: var(--magenta);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+footer { max-width: 1240px; margin: 0 auto; padding: 0 24px 40px; color: var(--muted); font-size: 14px; }
+footer h2 { color: var(--text); }
